@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fake News Classifier</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Fake News Classifier</h1>
+      <p class="subtitle">Paste a headline or article and the model will estimate whether it looks real or fake.</p>
+      <p id="api-status" class="api-status" aria-live="polite">Checking API…</p>
+    </header>
+
+    <form id="classifier-form" novalidate>
+      <label for="news-text">News text</label>
+      <textarea
+        id="news-text"
+        rows="9"
+        maxlength="10000"
+        placeholder="Paste the news headline or article here…"
+      ></textarea>
+
+      <div class="form-footer">
+        <span id="char-count" class="char-count">0 / 10000</span>
+        <div class="buttons">
+          <button type="button" id="clear-btn" class="secondary">Clear</button>
+          <button type="submit" id="submit-btn">
+            <span class="spinner hidden" id="spinner"></span>
+            <span id="submit-label">Analyze</span>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <section class="examples">
+      <p>Try an example:</p>
+      <button type="button" class="chip" data-example="Scientists confirm that drinking bleach cures all diseases, government hiding the truth, share before it's deleted!">Sensational claim</button>
+      <button type="button" class="chip" data-example="The central bank announced on Wednesday that it would keep interest rates unchanged, citing stable inflation and steady employment figures.">Neutral report</button>
+    </section>
+
+    <section id="error-box" class="error hidden" role="alert"></section>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <h2 id="result-label"></h2>
+      <p id="result-confidence-text"></p>
+      <div class="bar"><div id="result-bar" class="bar-fill"></div></div>
+      <p class="disclaimer">This is a machine-learning estimate, not a fact-check. Always verify with trusted sources.</p>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
