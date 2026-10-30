@@ -22,3 +22,5 @@ Thumbs.db
 WELFake_Dataset.csv
 # Trained machine learning models (optional)
 # *.joblib
+# Older model not used by the app
+/fake_news_model.joblib
